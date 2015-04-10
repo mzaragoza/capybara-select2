@@ -24,11 +24,11 @@ module Capybara
         page.execute_script(%|$("input.select2-input:visible").keyup();|)
         drop_container = ".select2-results"
       else
-        drop_container = ".select2-drop"
+        drop_container = ".select2-dropdown"
       end
 
       [value].flatten.each do |value|
-        find(:xpath, "//body").find("#{drop_container} li.select2-result-selectable div.select2-result-label", text: /\A#{value}\z/i).click
+        find(:xpath, "//body").find("#{drop_container} li.select2-results__option span", text: /\A#{value}\z/i).click
       end
     end
   end
