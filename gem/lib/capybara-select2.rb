@@ -31,6 +31,26 @@ module Capybara
         find(:xpath, "//body").find("#{drop_container} li.select2-results__option span", text: /\A#{value}\z/i).click
       end
     end
+
+    def select2_include?(value, options = {})
+      raise "Must pass a hash containing 'from' or 'xpath' or 'css'" unless options.is_a?(Hash) and [:from, :xpath, :css].any? { |k| options.has_key? k }
+
+      if options.has_key? :xpath
+        select2_container = first(:xpath, options[:xpath])
+      elsif options.has_key? :css
+        select2_container = first(:css, options[:css])
+      else
+        select_name = options[:from]
+        label = first("label", text: select_name)
+        select2_container = label.find(:xpath, '..').find(".select2-container")
+      end
+
+      # Open select2 field
+      select2_container.find(".select2-selection").click
+
+      # Search for value in pop up dropdown box
+      find(:css, "span.select2-container--open span.select2-results ul#select2-#{label['for']}-results").text.include?(value)
+    end
   end
 end
 
