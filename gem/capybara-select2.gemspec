@@ -6,7 +6,7 @@ require 'capybara-select2/version'
 Gem::Specification.new do |gem|
   gem.name          = "capybara-select2"
   gem.version       = Capybara::Select2::VERSION
-  gem.authors       = ["William Yeung"]
+  gem.authors       = ["William Yeung", "Randall Reed"]
   gem.email         = ["william@tofugear.com"]
   gem.description   = %q{Helper for triggering select for select2 javascript library}
   gem.summary       = ""
