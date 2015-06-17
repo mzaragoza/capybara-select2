@@ -47,6 +47,11 @@ If select2 field has [tags](http://ivaynberg.github.io/select2/#tags) option you
 select2_tag('value', from: 'Label of input')
 ```
 
+For Ajax (remote)
+```ruby
+select2_ajax('value', from: 'Label of input')
+```
+
 ## Contributing
 
 1. Fork it
